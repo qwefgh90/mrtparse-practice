@@ -60,7 +60,7 @@ class BgpDump:
         'verbose', 'output', 'ts_format', 'pkt_num', 'type', 'num', 'ts',
         'org_time', 'flag', 'peer_ip', 'peer_as', 'nlri', 'withdrawn',
         'as_path', 'origin', 'next_hop', 'local_pref', 'med', 'comm',
-        'atomic_aggr', 'aggr', 'as4_path', 'as4_aggr', 'old_state', 'new_state',
+        'atomic_aggr', 'aggr', 'as4_path', 'as4_aggr', 'old_state', 'new_state', 'local_ip'
     ]
 
     def __init__(self, args):
@@ -74,6 +74,7 @@ class BgpDump:
         self.org_time = 0
         self.flag = ''
         self.peer_ip = ''
+        self.local_ip = ''
         self.peer_as = 0
         self.nlri = []
         self.withdrawn = []
@@ -196,6 +197,7 @@ class BgpDump:
         self.num = count
         self.org_time = m['timestamp'][0]
         self.peer_ip = m['peer_ip']
+        self.local_ip = m['local_ip']
         self.peer_as = m['peer_as']
         if (m['subtype'][0] == BGP4MP_ST['BGP4MP_STATE_CHANGE']
             or m['subtype'][0] == BGP4MP_ST['BGP4MP_STATE_CHANGE_AS4']):
